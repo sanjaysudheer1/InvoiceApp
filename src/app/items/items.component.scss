@@ -1,0 +1,20 @@
+.table-padding {
+    padding: 2rem;
+}
+.card-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
