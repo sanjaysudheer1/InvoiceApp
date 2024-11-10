@@ -1,1 +1,57 @@
+<p-menubar [model]="items">
+  <!-- Main items (left side) -->
+  <ng-template pTemplate="start">
+    <!-- Logo or any additional elements on the left side (optional) -->
+    <svg width="180" height="24" viewBox="0 0 180 24" xmlns="http://www.w3.org/2000/svg">
+        <!-- Logo Part -->
+        <g id="logo">
+          <!-- Document Icon -->
+          <rect x="0" y="2" width="16" height="20" rx="2" ry="2" fill="#3A86FF"/>
+          <rect x="2" y="4" width="12" height="16" rx="1" ry="1" fill="white"/>
+      
+          <!-- Lines representing text on the document -->
+          <rect x="3" y="7" width="10" height="1.5" fill="#3A86FF" rx="0.75"/>
+          <rect x="3" y="10" width="8" height="1.5" fill="#3A86FF" rx="0.75"/>
+          <rect x="3" y="13" width="9" height="1.5" fill="#3A86FF" rx="0.75"/>
+      
+          <!-- Checkmark Icon -->
+          <path d="M4.5 17 L6.5 19 L10.5 15" stroke="#06D6A0" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      
+        <!-- Text Part -->
+        <text x="24" y="18" font-family="Verdana, Geneva, sans-serif" font-weight="bold" font-size="18" fill="#3A86FF">
+          Invo
+        </text>
+        <text x="72" y="18" font-family="Verdana, Geneva, sans-serif" font-weight="bold" font-size="18" fill="#06D6A0">
+          Ease
+        </text>
+      </svg>
+      
+      
+  </ng-template>
+
+  <!-- User profile (right side) -->
+  <ng-template pTemplate="end">
+    <!-- Profile button that triggers the dropdown menu -->
+    <!-- Notification button -->
+    <button
+      pButton
+      icon="pi pi-bell"
+      class="p-button-text"
+      (click)="onNotificationsClick()"
+    ></button>
+    <button
+      #profileButton
+      pButton
+      type="button"
+      icon="pi pi-user"
+      label="Profile"
+      class="p-button-text"
+      (click)="profileMenu.toggle($event)"
+    ></button>
+
+    <!-- Dropdown menu for profile options -->
+    <p-menu #profileMenu [popup]="true" [model]="profileItems"></p-menu>
+  </ng-template>
+</p-menubar>
 <router-outlet></router-outlet>

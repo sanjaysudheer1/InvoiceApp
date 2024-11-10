@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { PrimeIcons, MenuItem } from 'primeng/api';
+import { routesConstants } from '../routes_constants';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,6 +11,9 @@ import { MenuItem } from 'primeng/api';
 export class HomeComponent implements OnInit {
   items: MenuItem[] | undefined;
   profileItems: MenuItem[] | undefined; // Profile dropdown items
+  constructor(private router: Router) {
+    
+  }
   ngOnInit() {
     this.items = [
       {
@@ -15,8 +21,20 @@ export class HomeComponent implements OnInit {
         icon: 'pi pi-home',
       },
       {
-        label: 'Features',
-        icon: 'pi pi-star',
+        label: 'Create Master',
+        icon: PrimeIcons.PLUS,
+        items: [
+          {
+              label: 'Item Master',
+              icon: PrimeIcons.LIST,
+              command: () => this.navigateTo(routesConstants.ITEMS_LIST),
+          },
+          {
+              label: 'User Master',
+              icon: PrimeIcons.USER_PLUS,
+              command: () => this.navigateTo(routesConstants.USER_LIST),
+          }
+      ]
       },
       {
         label: 'Contact',
@@ -49,5 +67,9 @@ export class HomeComponent implements OnInit {
   onNotificationsClick() {
     // Implement the logic to show notifications or open a notifications panel
     console.log('Notifications clicked');
+  }
+
+  navigateTo(url: string) {
+    this.router.navigateByUrl(url);
   }
 }
