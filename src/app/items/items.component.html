@@ -4,7 +4,7 @@
             <div class="card-header-content">
                 <span class="card-title">Items List</span>
                 <div class="card-actions">
-                    <p-button icon="pi pi-plus" [rounded]="true" label="Add" class="mr-2" (onClick)="navigateTo('items_list/add_item')"></p-button>
+                    <p-button icon="pi pi-plus" [rounded]="true" label="Add" class="mr-2" (onClick)="navigateTo('/items_list/add-item')"></p-button>
                     <p-button icon="pi pi-refresh" [rounded]="true" label="Refresh"></p-button>
                 </div>
             </div>
@@ -22,8 +22,8 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.active }}</td>
                     <td>
-                        <p-button icon="pi pi-pencil" [rounded]="true" severity="secondary"/>
-                        <p-button icon="pi pi-trash" [rounded]="true" severity="danger" />
+                        <p-button icon="pi pi-pencil" [rounded]="true" severity="secondary" (onClick)="editItem(item)"/>
+                        <p-button icon="pi pi-trash" [rounded]="true" severity="danger"  (onClick)="deleteItem(item)"/>
                     </td>
                 </tr>
             </ng-template>

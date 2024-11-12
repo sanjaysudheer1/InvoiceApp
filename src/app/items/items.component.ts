@@ -20,4 +20,18 @@ export class ItemsComponent implements OnInit {
   loadItemsList() {
     this.itemService.getItems().subscribe((res: any) => this.items = res)
   }
+  
+
+  editItem(item: any) {
+    this.itemService.setData(item);
+    this.router.navigate(['/' + routesConstants.EDIT_ITEM]);
+  }
+
+  deleteItem(item: any) {
+    this.itemService.deleteItem(item['_id']).subscribe((res: any) => {
+      if(res.message === 'Item deleted successfully') {
+        this.loadItemsList()
+      }
+    });
+  }
 }

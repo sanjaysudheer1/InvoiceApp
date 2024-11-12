@@ -12,6 +12,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { ItemService } from './item.service';
 import { provideHttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { 
@@ -19,7 +20,10 @@ const routes: Routes = [
     component: ItemsComponent,
     children: [
       {
-        path: 'add_item', component: AddItemComponent
+        path: 'add-item', component: AddItemComponent
+      },
+      {
+        path: 'edit-item', component: AddItemComponent
       }
     ]
   }
@@ -36,6 +40,7 @@ const routes: Routes = [
     AutoCompleteModule,
     DropdownModule,
     CheckboxModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
   providers: [provideHttpClient(), ItemService]

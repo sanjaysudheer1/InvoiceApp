@@ -7,7 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ItemService {
   private apiUrl = environment.apiUrl;
+  private data: string | null = null;
 
+  setData(data: string) {
+    this.data = data;
+  }
+
+  getData(): string | null {
+    return this.data;
+  }
   constructor(private http: HttpClient) {}
 
   getItemTypes() {
@@ -16,5 +24,17 @@ export class ItemService {
 
   getItems() {
     return this.http.get(`${this.apiUrl}/items`);
+  }
+
+  addItem(payload: any) {
+    return this.http.post(`${this.apiUrl}/item`, payload);
+  }
+
+  updateItem(payload: any, id: any) {
+    return this.http.put(`${this.apiUrl}/item/${id}`, payload);
+  }
+
+  deleteItem(id: any) {
+    return this.http.delete(`${this.apiUrl}/item/${id}`);
   }
 }
