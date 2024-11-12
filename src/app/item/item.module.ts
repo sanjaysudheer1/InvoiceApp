@@ -10,6 +10,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AddItemComponent } from '../add-item/add-item.component';
+import { ItemService } from './item.service';
+import { provideHttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   { 
@@ -36,5 +38,6 @@ const routes: Routes = [
     CheckboxModule,
     RouterModule.forChild(routes),
   ],
+  providers: [provideHttpClient(), ItemService]
 })
 export class ItemModule {}
